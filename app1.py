@@ -5,40 +5,48 @@ Created on Fri Jan 31 14:26:28 2025
 @author: jperezr
 """
 
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-# Estilo de fondo
-page_bg_img = """
-<style>
-[data-testid="stAppViewContainer"]{
-background:
-radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#282828;
-background-size:16px 16px;
-</style>
-"""
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
 # Título de la aplicación
 st.title("Análisis de Sentimientos - AFORE PENSIONISSSTE")
 
-# Sidebar con información de ayuda
+# Sidebar con resumen e información sobre la IA utilizada
 with st.sidebar:
-    st.header("Ayuda")
+    st.header("Resumen")
     st.write("""
-    Esta aplicación permite analizar el sentimiento de comentarios relacionados con **AFORE PENSIONISSSTE**.
-    Sube un archivo de Excel con una columna llamada **'Comentario'** para comenzar el análisis.
+    Este código implementa una aplicación en Streamlit que:
+    
+    - Carga un archivo **Excel** con comentarios.
+    - Usa **VADER** para analizar el sentimiento de cada comentario.
+    - Clasifica los comentarios como **Positivos, Negativos o Neutrales**.
+    - Muestra los resultados en un **DataFrame**.
+    - Genera un **gráfico** con la distribución de los sentimientos.
+    - Muestra **métricas clave** sobre los comentarios analizados.
+    
+    ✨ Perfecto para evaluar opiniones sobre **AFORE PENSIONISSSTE** de manera rápida e interactiva. 🎯
     """)
-    st.markdown("---")  # Línea separadora
-    st.write("**Desarrollado por:** Javier Horacio Pérez Ricárdez")
-    st.write("**Copyright © 2023** - Todos los derechos reservados.")
+
+    st.header("🔍 ¿Qué tipo de IA usa este código?")
+    st.write("""
+    **Procesamiento de Lenguaje Natural (NLP)** 🧠  
+    - Se usa para analizar texto y determinar su polaridad emocional (**positivo, negativo o neutral**).
+
+    **IA Basada en Reglas y Lexicón** 📖  
+    - **VADER** utiliza un diccionario de palabras con valores predefinidos de sentimiento.  
+    - No es un modelo de **Machine Learning**, sino un método basado en **reglas heurísticas**.
+
+    **Análisis de Sentimiento Léxico** 📊  
+    - Evalúa cada palabra en un comentario y le asigna un **puntaje de sentimiento**.  
+    - Calcula un **"compound score"**, que determina la **emoción general** del texto.
+    
+    - Desrrollado por: 
+    - Javier Horacio Pérez Ricárdez    
+    
+    """)
 
 # Cargar el archivo de Excel
 archivo = st.file_uploader("Sube el archivo de comentarios (Excel)", type=["xlsx"])
