@@ -43,7 +43,7 @@ with st.sidebar:
     - Evalúa cada palabra en un comentario y le asigna un **puntaje de sentimiento**.  
     - Calcula un **"compound score"**, que determina la **emoción general** del texto.
     
-    - Desrrollado por: 
+    - Desarrollado por: 
     - Javier Horacio Pérez Ricárdez    
     
     """)
